@@ -2,50 +2,31 @@
 using namespace std;
 
 int  main(){
-    int n;
-    cin >> n;
-    int m;
-    cin >> m;
+    int n, a;
+    int amazing = 0;
+    cin >> n;   // number of contest
 
-    string hash,f_hash, l_hash;
-    for(int i =0; i<m ;i++){
-        hash.push_back('#');
+    vector<int> vi;
+    for(int i=0; i<n; i++){
+        cin >> a;
+        vi.push_back(a);
     }
     
-    for(int i=0; i<m ; i++){
-        if( i==0){
-            f_hash.push_back('#');
+    int best = vi[0];
+    int worst = vi[0];
+
+    for(int i=1; i<n; i++){
+
+        if( vi[i] > best){
+            best = vi[i];
+            ++amazing;
         }
-        else{
-            f_hash.push_back('.');
+        else if( vi[i] < worst){
+            worst = vi[i];
+            ++amazing;
         }
     }
 
-    for(int i=0; i<m;i++){
-        if(i ==m-1){
-            l_hash.push_back('#');
-        }
-        else{
-            l_hash.push_back('.');
-        }
-    }
-    int l=1;
-    int f=3;
-    for(int i=0; i<n; i++){
-        if(i == 0 || i%2 == 0){
-            cout << hash << endl;
-        }
-        else{
-            if( l < f){ 
-            cout << l_hash << endl;
-            l +=4;
-            }
-            else if( f < l){
-            cout << f_hash << endl;
-            f += 4;
-            }
-  
-        }
-    }
-return 0;
+    cout << amazing << endl;
+
 }
