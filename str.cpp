@@ -2,31 +2,34 @@
 using namespace std;
 
 int  main(){
-    int n, a;
-    int amazing = 0;
-    cin >> n;   // number of contest
+    int n , a ,crime, untreated = 0, hired = 0, res;
+    cin >> n;
 
     vector<int> vi;
     for(int i=0; i<n; i++){
         cin >> a;
         vi.push_back(a);
     }
-    
-    int best = vi[0];
-    int worst = vi[0];
 
-    for(int i=1; i<n; i++){
+    for(int i=0; i<n ;i++){
+        if( vi[i] < 0){
 
-        if( vi[i] > best){
-            best = vi[i];
-            ++amazing;
+           crime = hired - abs(vi[i]);
+
+           if( crime < 0){
+                untreated += abs(crime);
+                crime = 0;
+           }
+           else{
+                hired -= abs(vi[i]);
+                crime = 0;
+           }
+
         }
-        else if( vi[i] < worst){
-            worst = vi[i];
-            ++amazing;
+        else if( vi[i] >=0){
+            hired += vi[i];
         }
     }
-
-    cout << amazing << endl;
-
+    cout <<  untreated << endl;
+    
 }
