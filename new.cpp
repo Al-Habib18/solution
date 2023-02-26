@@ -3,24 +3,17 @@ using namespace std;
 
 int main()
 {
-    int a, b,diff= 0 , same = 0, rem;
-    cin >> a >> b;
+    int n, a , sum = 0;
+    vector<int> vi;
+    for(int i=0; i<3; i++){
+        cin >> a;
+        vi.push_back(a);
+    }
+    sort(vi.begin(),vi.end());
+    int res1 = vi[2] - vi[1];
+    int res2 = vi[1] - vi[0];
 
-    if( a > b){
-        diff =b;
-        rem = a-b;
-        same = rem/2;
-    }
-    else if( b > a){
-        diff = a;
-        rem = b-a;
-        same = rem/2;
-    }
-    else{
-        diff = a;
-        same = 0;
-    }
-
-    cout <<diff << " " << same << endl;
+    sum =res1 + res2;
+    cout << sum << endl;
     return 0;
 }
